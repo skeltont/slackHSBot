@@ -1,0 +1,28 @@
+{
+  "name": "slack-hs-bot",
+  "version": "0.0.0",
+  "description": "a bot for slack to report hearthstone cards",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.x.x",
+    "body-parser": "^1.x.x",
+    "request": "~2.61.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skeltont/slackHSBot.git"
+  },
+  "keywords": [
+    "hearthstone",
+    "slack",
+    "bot"
+  ],
+  "author": "Ty Skelton",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/skeltont/slackHSBot/issues"
+  }
+}
