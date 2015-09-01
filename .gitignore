@@ -1,0 +1,10 @@
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+
+# Ignore dependencies, because they can install what they need themselves.
+/node_modules
+
+# dumb stuff
+DS_Store

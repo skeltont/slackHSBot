@@ -1,6 +1,6 @@
 module.exports = function (req, res, next) {
   var request = require('request');
-  var userName = req.body.user_name; 
+  var userName = req.body.user_name;
   var card = req.body.text.split('hsbot ')[1].replace(/ /g, "%20");
   var img_url = '';
 
@@ -11,23 +11,25 @@ module.exports = function (req, res, next) {
     }
   }
 
-  request.get(
-    //'http://hearthapi.com/v1.0/cards/by-name/' + card,
-    options,
-    function (e, r, b) {
-      //var id = Object.keys(b);
-      //img_url = b[0].img;
-      //console.log(b);
-      var json = JSON.parse(b);
-      if (userName !== 'slackbot') {
-        return res.status(200).json({
-          text:'here you go: ' + json[0].img
-        });u
-      } else {
-        return res.status(200).end();
-      }
+  request.get(options, function (e, r, b) {
+    var json = JSON.parse(b);
+    // console.log(json);
+    // console.log(r.statusCode);
+
+    if (e || r.statusCode !== 200) {
+      return res.status(200).json({
+        text: 'Oh Boy! Looks like I couldn\'t find that card. Try formatting your command like "hsbot Ysera"'
+      });
     }
-  );
+
+    if (userName !== 'slackbot') {
+      return res.status(200).json({
+        text: 'here you go: ' + json[0].img
+      });
+    } else {
+      return res.status(200).end();
+    }
+  });
 
   /*
   var botPayload = {
@@ -38,6 +40,6 @@ module.exports = function (req, res, next) {
     return res.status(200).json(botPayload);
   } else {
     return res.status(200).end();
-  } 
+  }
   */
 }
