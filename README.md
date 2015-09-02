@@ -13,6 +13,10 @@ Configure your slack webhook to send a GET request to the server when it identif
 <br /> *Example:* <br />
 ``` hsbot [Druid of the Claw] ```
 
+##### Options
+Only one extra option is available at the moment. This is still a work in progress. 
+- **g**: ```hsbot [Varian Wrynn] -g``` Will link a .gif of the *golden* card image into chat. 
+
 ## Checking response *outside* of chat
 ```curl -X POST --data "text=hsbot [Druid of the Claw]" http://localhost:3000/get_card```
 
