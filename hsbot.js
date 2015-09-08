@@ -3,7 +3,7 @@ function checkArguments(request) {
   var req_split = request.split('-');
   var args = [];
   for (j=1; j < req_split.length; j++) {
-    args.push(req_split[j]);
+    args.push(req_split[j].replace(/ /g, ''));
   }
   return args;
 }
@@ -32,6 +32,13 @@ function formatImageResponse(object, args) {
       img_url = 'Oi, it looks like I couldn\'t find that card. This is not Ty\'s fault.';
     } else {
       img_url = object.img;
+    }
+  }
+  if (array_contains(args, 'f')) {
+    if (object.flavor === undefined) {
+      img_url = img_url.concat('\n there\'s no flavor text available for this card.');
+    } else {
+      img_url = img_url.concat('\n "' + object.flavor + '"');
     }
   }
   return img_url;
